@@ -1,11 +1,12 @@
 ﻿
-using ConsoleApp.week1;
-
-string currentShow = "ClassTest";
+string currentShow = "week3";
 switch (currentShow)
 {
-    case "ClassTest":
-        ClassTest.Run(1);
+    case "week1":
+        ConsoleApp.week1.ClassTest.Run(1);
+        break;
+    case "week3":
+        ConsoleApp.week3.ClassTest.Run(1);
         break;
     default:
         break;
