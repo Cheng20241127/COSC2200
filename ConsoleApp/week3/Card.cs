@@ -3,7 +3,8 @@ namespace Euchre
 {
     public class Card : GameBase.Card
     {
-        public Card(GameBase.CardSuit suit, byte rank) : base(suit,rank) { 
+        public Card(GameBase.CardSuit suit, byte rank) : base(suit,rank) {
+            Console.WriteLine("Euchre.Card constructor");
         }
         public override int CompareTo(GameBase.Card? other)
         {

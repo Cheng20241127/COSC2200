@@ -7,10 +7,12 @@
         Club,
         Spade
     }
-    public class Card : IComparable<Card>
+    public class Card : IComparable<Card>, IDisposable
     {
         public CardSuit Suit { get; private set; }
         protected byte rank;
+        private bool disposedValue;
+
         public string Rank { 
             get {                
                 switch (rank)
@@ -30,6 +32,7 @@
         }
         public Card(string suit, string rank)
         {
+            Console.WriteLine("Game.Card constructor");
             switch (suit)
             {
                 case "Hearts":
@@ -79,6 +82,7 @@
         }
         public Card(CardSuit suit, byte rank)
         {
+            Console.WriteLine("Game.Card constructor");
             Suit = suit;
             this.rank = rank;
         }
@@ -97,6 +101,35 @@
         {
             if (other == null) return 1;
             return rank.CompareTo(other.rank);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    // TODO: dispose managed state (managed objects)
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override finalizer
+                // TODO: set large fields to null
+                disposedValue = true;
+            }
+        }
+
+        // // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
+        // ~Card()
+        // {
+        //     // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+        //     Dispose(disposing: false);
+        // }
+
+        void IDisposable.Dispose()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
     }
 }
