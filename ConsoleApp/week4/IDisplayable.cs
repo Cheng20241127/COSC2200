@@ -4,7 +4,7 @@
     public interface IPersistable
     {
         object Read(string id);
-        bool Save(object o);
+        bool Save(string id);
         bool HasChanges { get; set; }
     }
     public interface IDataAccessObject : IDisplayable, IPersistable
@@ -13,7 +13,7 @@
         //public int dataMember = 0; we cannot have fields in Interface
         //int privateData = 0;
         int DataMember { get; set; }
-        new bool Save(object o)
+        bool Save2(string id)
         {
             return false;
         }
@@ -23,14 +23,31 @@
         int IDataAccessObject.DataMember { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         bool IPersistable.HasChanges { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
+        public object IPersistable.Read(string id)
+        {
+            return null;
+        }
+        public bool IPersistable.Save(string id)
+        {
+            return false;
+        }
+        //bool IDataAccessObject.Save2(object o) {
+        //    return IDataAccessObject.Save2(o);
+        //}
+    }
+    public class DataAccessObject : IDisplayable, IPersistable
+    {
+        bool IPersistable.HasChanges { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         object IPersistable.Read(string id)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
-        bool IPersistable.Save(object o)
+        bool IPersistable.Save(string id)
         {
-            return true;
+            return false;
         }
     }
+
 }
