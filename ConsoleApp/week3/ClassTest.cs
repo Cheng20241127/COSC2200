@@ -34,7 +34,7 @@ namespace ConsoleApp.week3
                         using (GameBase.Card card = new GameBase.Card(GameBase.CardSuit.Heart, 1))
                         {
                             Console.WriteLine(card.ToString());
-                            card.Dispose();
+                            //card.Dispose();
                             Console.WriteLine($"Dispose of Person will be called when out the scope");
                         }
                     }

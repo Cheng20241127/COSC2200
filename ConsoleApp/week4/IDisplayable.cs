@@ -13,6 +13,7 @@
         //public int dataMember = 0; we cannot have fields in Interface
         //int privateData = 0;
         int DataMember { get; set; }
+        //interface can have default member implementation
         bool Save2(string id)
         {
             return false;
@@ -23,17 +24,19 @@
         int IDataAccessObject.DataMember { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         bool IPersistable.HasChanges { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        public object IPersistable.Read(string id)
+        object IPersistable.Read(string id)
         {
             return null;
         }
-        public bool IPersistable.Save(string id)
+        bool IPersistable.Save(string id)
         {
             return false;
         }
-        //bool IDataAccessObject.Save2(object o) {
-        //    return IDataAccessObject.Save2(o);
-        //}
+        //class overwrite the default implementation
+        bool IDataAccessObject.Save2(string id)
+        {
+            return false;
+        }
     }
     public class DataAccessObject : IDisplayable, IPersistable
     {

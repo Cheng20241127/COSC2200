@@ -11,8 +11,8 @@ switch (currentShow)
         ConsoleApp.week3.ClassTest.Run(2);
         break;
     case "week4":
-        //ConsoleApp.week4.ClassTest.Run(1);
-        SortedListSample.Test();
+        ConsoleApp.week4.ClassTest.Run(1);
+        //SortedListSample.Test();
         break;
     default:
         break;
