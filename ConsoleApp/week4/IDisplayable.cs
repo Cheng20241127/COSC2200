@@ -10,7 +10,27 @@
     public interface IDataAccessObject : IDisplayable, IPersistable
     {
         // add additional members here
-        //public int dataMember = 0;
+        //public int dataMember = 0; we cannot have fields in Interface
+        //int privateData = 0;
         int DataMember { get; set; }
+        new bool Save(object o)
+        {
+            return false;
+        }
+    }
+    public class DataAccess : IDataAccessObject
+    {
+        int IDataAccessObject.DataMember { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        bool IPersistable.HasChanges { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        object IPersistable.Read(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        bool IPersistable.Save(object o)
+        {
+            return true;
+        }
     }
 }

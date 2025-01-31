@@ -1,7 +1,7 @@
 ﻿
 using ConsoleApp.week4;
 
-string currentShow = "week4";
+string currentShow = "week3";
 switch (currentShow)
 {
     case "week1":

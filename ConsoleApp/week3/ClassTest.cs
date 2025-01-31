@@ -27,12 +27,13 @@ namespace ConsoleApp.week3
                 case 2: //implement interface
                         //https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/interface
                     {
-/*                        using (IDisposable person2 = new Person("FirstName", "LastName"))
+                        /*                        using (IDisposable person2 = new Person("FirstName", "LastName"))
+                                                {
+                                                    Console.WriteLine($"Dispose of Person will be called when out the scope");
+                                                }*/
+                        using (GameBase.Card card = new GameBase.Card(GameBase.CardSuit.Heart, 1))
                         {
-                            Console.WriteLine($"Dispose of Person will be called when out the scope");
-                        }*/
-                        using (GameBase.Card card = new GameBase.Card("FirstName", "LastName"))
-                        {
+                            Console.WriteLine(card.ToString());
                             Console.WriteLine($"Dispose of Person will be called when out the scope");
                         }
                     }

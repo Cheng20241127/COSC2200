@@ -86,6 +86,10 @@
             Suit = suit;
             this.rank = rank;
         }
+        ~Card()
+        {
+            //this will be called by .net Garbage collector
+        }
         public void TurnA()
         {
             if (this.rank == 14)
