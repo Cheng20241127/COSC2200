@@ -1,6 +1,4 @@
 ﻿
-using ConsoleApp.week1;
-
 namespace ConsoleApp.week3
 {
 
@@ -37,6 +35,12 @@ namespace ConsoleApp.week3
                             //card.Dispose();
                             Console.WriteLine($"Dispose of Person will be called when out the scope");
                         }
+                    }
+                    break;
+                case 3:
+                    {
+                        Euchre.Card card = new Euchre.Card(GameBase.CardSuit.Heart, 1);
+                        card.TurnA();
                     }
                     break;
             }

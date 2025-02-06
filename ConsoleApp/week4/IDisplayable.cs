@@ -1,6 +1,12 @@
 ﻿namespace ConsoleApp.week4
 {
-    public interface IDisplayable { string GetDisplayText(string sep) => ToString() + sep; }
+    public interface IDisplayable {
+        // add additional members here
+        //public int dataMember = 0; we cannot have fields in Interface
+        //int privateData = 0;
+        int DataMember { get; set; }
+        string GetDisplayText(string sep) => ToString() + sep; 
+    }
     public interface IPersistable
     {
         object Read(string id);
@@ -9,20 +15,26 @@
     }
     public interface IDataAccessObject : IDisplayable, IPersistable
     {
-        // add additional members here
-        //public int dataMember = 0; we cannot have fields in Interface
-        //int privateData = 0;
-        int DataMember { get; set; }
         //interface can have default member implementation
         bool Save2(string id)
         {
             return false;
         }
     }
-    public class DataAccess : IDataAccessObject
+    public abstract class Access
     {
-        int IDataAccessObject.DataMember { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public abstract bool AbtFunction();
+        public bool ImpFunction() { return true; }
+    }
+    public class DataAccess : Access, IDataAccessObject
+    {
+        int IDisplayable.DataMember { get ; set ; }//no default implementation on data property
         bool IPersistable.HasChanges { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        public override bool AbtFunction()
+        {
+            return false;
+        }
 
         object IPersistable.Read(string id)
         {
@@ -32,25 +44,14 @@
         {
             return false;
         }
-        //class overwrite the default implementation
-        bool IDataAccessObject.Save2(string id)
+        public static void Test()
         {
-            return false;
+            DataAccess obj = new DataAccess();
+            ((IPersistable)obj).Read(""); //we need to cast to interface to access its members
+            obj.AbtFunction();
+            obj.ImpFunction();//no need to cast to parent class to access its members
         }
     }
-    public class DataAccessObject : IDisplayable, IPersistable
-    {
-        bool IPersistable.HasChanges { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        object IPersistable.Read(string id)
-        {
-            return null;
-        }
-
-        bool IPersistable.Save(string id)
-        {
-            return false;
-        }
-    }
 
 }

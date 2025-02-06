@@ -3,7 +3,7 @@
 namespace ConsoleApp.week4
 {
 
-    internal class ClassTest
+    internal partial class ClassTest
     {
         public static void Run(int iCase)
         {
@@ -17,12 +17,7 @@ namespace ConsoleApp.week4
                     ((IDataAccessObject)objData).Save2("");
                     break;
                 case 2: //implement interface
-                    DataAccessObject obj = new DataAccessObject();
-                    ((IPersistable)obj).Save("");
-
-                    IPersistable obj2 = new DataAccessObject();
-                    IDisplayable obj3 = new DataAccessObject();
-                    obj2.Save("");
+                    DataAccess.Test();
                     break;
             }
         }
