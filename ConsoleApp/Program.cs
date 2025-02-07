@@ -13,9 +13,9 @@ switch (currentShow)
         //SortedListSample.Test();
         break;
     case "week5":
-        //ConsoleApp.week5.CustomExceptions.Test("James007");
+        ConsoleApp.week5.CustomExceptions.Test("James007");
         //ConsoleApp.week5.CustomExceptions.Test("James");
-        ConsoleApp.week5.DelegateTest.Test();
+        //ConsoleApp.week5.DelegateTest.Test();
         break;
     default:
         break;

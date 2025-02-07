@@ -32,6 +32,7 @@ namespace ConsoleApp.week5
             catch (InvalidStudentNameException ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
             }
         }
         private static void ValidateStudent(Student std)
